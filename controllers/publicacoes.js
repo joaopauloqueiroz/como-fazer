@@ -14,7 +14,7 @@ const novaStore = async(req, res) => {
             titulo: req.body.titulo,
             conteudo: req.body.conteudo
     })
-    res.redirect('/publicacoes/categoria/'+req.params.categoria)
+    res.redirect('/publicacoes/categoria/'+req.body.categoria)
 }
 
 //listagem das categorias
@@ -26,7 +26,7 @@ const listagem = async(req,  res) => {
 
 //apagar registro
 const apagar = async(req, res) => {
-    await api.apagar('publicacoes', req.params.id)
+    await api.apagar('publicacoes/'+req.params.categoria, req.params.id)
     res.redirect('/publicacoes/categoria/'+req.params.categoria)
 }
 

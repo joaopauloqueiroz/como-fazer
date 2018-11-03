@@ -23,6 +23,8 @@ const listagem = async(req,  res) => {
 //apagar registro
 const apagar = async(req, res) => {
     await api.apagar('categorias', req.params.id)
+    await api.apagar('publicacoes', req.params.id)
+
     res.redirect('/categorias')
 }
 

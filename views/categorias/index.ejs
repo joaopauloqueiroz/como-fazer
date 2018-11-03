@@ -7,11 +7,18 @@
             </tr>
             <%categorias.forEach(categoria => {%>
             <tr>
-                <td><%=categoria.categoria%></td>
-                <td><a href="/categorias/excluir/<%=categoria.id%>">Deletar</a> 
-                    | <a href="/categorias/editar/<%=categoria.id%>">Editar</a></td>
+                <td>
+                    <a href="/publicacoes/categoria/<%=categoria.id%>"><%=categoria.categoria%></a>
+                </td>
+                <td><a href="/categorias/excluir/<%=categoria.id%>"><span class="glyphicon glyphicon-trash"></span></a> 
+                    | <a href="/categorias/editar/<%=categoria.id%>"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
             <%})%>
         </table>
-        <a href="/categorias/nova" class="btn btn-primary">Nova Categoria</a>
+        <div class="form-group">
+            <a href="/categorias/nova" class="btn btn-primary">Nova Categoria</a> 
+       
+            <a href="/publicacoes/nova" class="btn btn-primary">Nova Publicação</a>
+        </div>
+
     <%-include('../footer')%>

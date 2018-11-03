@@ -9,10 +9,15 @@
             <%publicacoes.forEach(publicacao => {%>
             <tr>
                 <td><%=publicacao.titulo%></td>
-                <td><a href="/publicacoes/excluir/<%=categoria%>/<%=publicacao.id%>">Deletar</a> 
-                    | <a href="/publicacoes/editar/<%=categoria%>/<%=publicacao.id%>">Editar</a></td>
+
+                <td>
+                <a href="/publicacoes/excluir/<%=categoria%>/<%=publicacao.id%>">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a> 
+                     <a href="/publicacoes/editar/<%=categoria%>/<%=publicacao.id%>">
+                 <span class="glyphicon glyphicon-edit"></span></a></td>
             </tr>
             <%})%>
         </table>
-        <a href="/publicacoes/nova" class="btn btn-primary">Nova Publicação</a>
+        
  <%-include('../footer')%>
