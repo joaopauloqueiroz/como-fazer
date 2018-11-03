@@ -23,7 +23,6 @@ const list = async (key) => {
 }
 
 //deletar
-
 const apagar = async ( key, id ) => {
     await axios.delete(baseUrl + key + '/' + id + '.json')
     return true

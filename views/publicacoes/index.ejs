@@ -1,0 +1,18 @@
+<%-include('../header')%>
+        <h1>Listagem de Publicações</h1>
+        <table class="table table-hover">
+            <tr>
+                <th>Publicação</th>
+                <th>Ações</th>
+            </tr>
+            
+            <%publicacoes.forEach(publicacao => {%>
+            <tr>
+                <td><%=publicacao.titulo%></td>
+                <td><a href="/publicacoes/excluir/<%=publicacao.id%>">Deletar</a> 
+                    | <a href="/publicacoes/editar/<%=publicacao.id%>">Editar</a></td>
+            </tr>
+            <%})%>
+        </table>
+        <a href="/publicacoes/nova" class="btn btn-primary">Nova Publicação</a>
+ <%-include('../footer')%>
