@@ -2,17 +2,17 @@
         <h1>Nova Publicação</h1>
         <form action="/publicacoes/nova" method="post">
             <div class="form-group">
-                <label for="publicacao">Titulo</label>
-                <input type="text" required name="publicacao" id="publicacao" class="form-control" placeholder="Digite o titulo...">
+                <label for="titulo">Titulo</label>
+                <input type="text" required name="titulo" id="titulo" class="form-control" placeholder="Digite o titulo...">
             </div>
             
             <div class="form-group">
                     <label for="publicacao">Categoria</label>
                     <select name="categoria" id="categoria" class="form-control" required aria-placeholder="Selecione uma Categoria">
                             <option value="" disablea>Selecione uma categoria</option>
-                            <%categorias.forEach(categoria => {%>
+                            <%categorias.forEach(categoria => { %>
                                 <option value="<%=categoria.id%>"><%=categoria.categoria%></option>
-                                <%})%>
+                            <%  }) %>
                     </select>
                 </div>
 

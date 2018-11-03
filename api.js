@@ -5,6 +5,7 @@ const baseUrl = 'https://como-fazer-dev-full.firebaseio.com/'
 //listar
 const list = async (key) => {
     const content = await axios.get(baseUrl+key+'.json')
+    
     if(content.data){
         const objetos = Object
                                 .keys(content.data)
@@ -41,23 +42,17 @@ const get = async ( key, id ) => {
 
 //atualizar
 const update = async ( key, id, data ) => {
-    await axios.put(baseUrl +  key + '/' + id + '.json', {
-        categoria: data
-    })
+    await axios.put(baseUrl +  key + '/' + id + '.json', data)
     return true
 }
 
 //create 
 const create = async ( key, data ) => {
-    await axios.post(baseUrl + key +'.json',{
-        categoria: data
-    })
+    console.log(data)
+    await axios.post(baseUrl + key +'.json', data)
     return true
 }
+
 module.exports = {
-    list,
-    apagar,
-    get,
-    update,
-    create
+    list, apagar, get, update,  create
 }

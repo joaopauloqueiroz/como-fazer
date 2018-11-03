@@ -4,7 +4,7 @@ const categoria = require('./categorias')
 //controller nova categoria
 const novaForm = async (req, res) => {
     const categorias = await api.list('categorias')
-    res.render('publicacoes/nova', {categorias})
+    res.render('publicacoes/nova', { categorias })
     
 }
 
@@ -12,37 +12,41 @@ const novaForm = async (req, res) => {
 const novaStore = async(req, res) => {
     await api.create('publicacoes/'+ req.body.categoria, {
             titulo: req.body.titulo,
-            conteudo: req.body.conteudo   
+            conteudo: req.body.conteudo
     })
-    res.redirect('/publicacoes')
+    res.redirect('/publicacoes/categoria/'+req.params.categoria)
 }
 
 //listagem das categorias
 const listagem = async(req,  res) => {
     const categoria = req.params.categoria
     const publicacoes = await api.list('publicacoes/'+categoria)
-    console.log(publicacoes)
-     res.render('publicacoes/', {publicacoes})
+     res.render('publicacoes/', {publicacoes, categoria})
  }
 
 //apagar registro
 const apagar = async(req, res) => {
     await api.apagar('publicacoes', req.params.id)
-    res.redirect('/publicacoes')
+    res.redirect('/publicacoes/categoria/'+req.params.categoria)
 }
 
 //editar registro view
 const editar = async(req, res) => {
-    const categoria = await api.get('publicacoes', req.params.id)
-        res.render('publicacoes/editar',{categoria})
+    const publicacoes = await api.get('publicacoes/'+req.params.categoria, req.params.id)
+        res.render('publicacoes/editar',{ 
+            publicacoes,
+            categoria: req.params.categoria
+     })
         
 }
 
 //editar registro store
 const editarStore = async(req, res) => {
-    await api.update('publicacoes', req.params.id,req.body.categoria)
-
-    res.redirect('/publicacoes')
+    await api.update('publicacoes/'+req.params.categoria, req.params.id, {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    })
+    res.redirect('/publicacoes/categoria/'+req.params.categoria)
 }
 
 module.exports = {

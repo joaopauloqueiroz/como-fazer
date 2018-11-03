@@ -8,7 +8,9 @@ const novaForm = (req, res) => {
 
 //controller nova create
 const novaStore = async(req, res) => {
-    await api.create('categorias', req.body.categoria)
+    await api.create('categorias', {
+        categoria: req.body.categoria
+    })
     res.redirect('/categorias')
 }
 
@@ -33,7 +35,9 @@ const editar = async(req, res) => {
 
 //editar registro store
 const editarStore = async(req, res) => {
-    await api.update('categorias', req.params.id,req.body.categoria)
+    await api.update('categorias', req.params.id,{
+        categoria: req.body.categoria
+    })
 
     res.redirect('/categorias')
 }
