@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded())
 
 
 app.get('/', async (req, res) =>{
-    res.render('index')
+    res.redirect('/categorias')
 })
 
 app.use('/categorias',categorias)
